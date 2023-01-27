@@ -1,6 +1,19 @@
 const generate = () => {
     const result = document.getElementById('result')
-    result.innerText = generate_random_number(1,16)
+    const params = new URLSearchParams(window.location.search)
+
+    var min = 0
+    var max = 16
+
+    if (params.has('min')) {
+        min = Number(params.get('min'))
+    }
+
+    if (params.has('max')) {
+        max = Number(params.get('max'))
+    }
+
+    result.innerText = generate_random_number(min,max)
 }
 
 const generate_random_number = (min, max) => {
